@@ -1,38 +1,25 @@
 #include <stdio.h>
-void swap(int*xp,int*yp) 
-{
-    int temp=*xp;
-    *xp=*yp;
-    *yp=temp;
-}
-void selectionSort(int arr[],int n) 
-{
-    int i,j,min_index;
-    for (i=0;i<n-1;i++)
-	{
-        min_index=i;
-        for (j=i+1;j<n;j++)
-            if (arr[j]<arr[min_index])
-                min_index=j;
-        swap(&arr[min_index], &arr[i]);
-    }
-}
-
-void printArray(int arr[],int size) 
-{
-    int i;
-    for (i=0;i<size;i++)
-        printf("%d",arr[i]);
-    printf("\n");
-}
 int main() 
 {
-    int arr[]={64,25,12,22,11};
-    int n=sizeof(arr)/sizeof(arr[0]);
-    printf("Unsorted array: \n");
-    printArray(arr,n);
-    selectionSort(arr,n);
-    printf("Sorted array:\n");
-    printArray(arr,n);
-    return 0;
+   int arr[10]={6,12,0,18,11,99,55,45,34,2};
+   int n=10;
+   int i,j,position, swap;
+   for (i=0;i<(n-1);i++)
+   {
+      position=i;
+      for (j=i+1;j<n;j++) 
+	  {
+         if (arr[position]>arr[j])
+            position=j;
+      }
+      if (position!=i)
+	   {
+         swap=arr[i];
+         arr[i]=arr[position];
+         arr[position]=swap;
+      }
+   }
+   for (i=0;i<n;i++)
+      printf("%d\t",arr[i]);
+   return 0;
 }
